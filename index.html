@@ -1,297 +1,162 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professeur Malsah Moumen | Accueil</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-        }
-        .gradient-bg {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pr. Moumen — Professeur d'Informatique</title>
+<meta name="description" content="Site officiel du Professeur Moumen, professeur d'informatique. Découvrez son parcours et ses projets." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
 </head>
-<body class="bg-slate-50 text-slate-900 leading-relaxed">
+<body>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0">
-                    <span class="text-2xl font-bold text-indigo-900">M. Moumen</span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8 text-sm font-medium">
-                        <a href="#accueil" class="text-indigo-600 hover:text-indigo-500 transition">Accueil</a>
-                        <a href="#a-propos" class="text-slate-600 hover:text-indigo-500 transition">À Propos</a>
-                        <a href="#enseignement" class="text-slate-600 hover:text-indigo-500 transition">Enseignement</a>
-                        <a href="#recherche" class="text-slate-600 hover:text-indigo-500 transition">Recherche</a>
-                        <a href="#contact" class="bg-indigo-900 text-white px-4 py-2 rounded-lg hover:bg-indigo-800 transition">Contact</a>
-                    </div>
-                </div>
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="p-2 text-slate-600 focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-2">
-            <a href="#accueil" class="block px-3 py-2 text-slate-600">Accueil</a>
-            <a href="#a-propos" class="block px-3 py-2 text-slate-600">À Propos</a>
-            <a href="#enseignement" class="block px-3 py-2 text-slate-600">Enseignement</a>
-            <a href="#recherche" class="block px-3 py-2 text-slate-600">Recherche</a>
-            <a href="#contact" class="block px-3 py-2 text-indigo-600 font-bold">Contact</a>
-        </div>
+<!-- Zellige pattern background -->
+<div class="zellige-bg" aria-hidden="true"></div>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="brand">
+      <span class="brand-mark">م</span>
+      <span class="brand-text">Pr. Moumen</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#projects">Portfolio</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
+    <button class="burger" aria-label="Menu" id="burger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-    <!-- Hero Section -->
-    <header id="accueil" class="pt-32 pb-20 gradient-bg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
-            <div class="flex-1 text-center md:text-left">
-                <h2 class="text-indigo-600 font-semibold tracking-wide uppercase text-sm mb-2">Bienvenue sur mon espace académique</h2>
-                <h1 class="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-                    Professeur Malsah Moumen
-                </h1>
-                <p class="text-xl text-slate-600 mb-8 max-w-2xl">
-                    Enseignant-Chercheur dédié à l'innovation pédagogique et à l'excellence scientifique. Exploration des savoirs pour construire le futur.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <a href="#enseignement" class="px-8 py-3 bg-indigo-900 text-white rounded-xl shadow-lg hover:bg-indigo-800 transition transform hover:-translate-y-1 text-center font-semibold">
-                        Découvrir mes cours
-                    </a>
-                    <a href="#recherche" class="px-8 py-3 border-2 border-slate-300 text-slate-700 rounded-xl hover:bg-slate-100 transition text-center font-semibold">
-                        Travaux de recherche
-                    </a>
-                </div>
-            </div>
-            <div class="flex-1 flex justify-center">
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-slate-400 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-slate-200">
-                        <!-- Placeholder Image - Professor's Photo -->
-                        <div class="w-full h-full flex items-center justify-center text-slate-400">
-                            <svg class="w-24 h-24" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <span class="eyebrow">السلام عليكم · Bienvenue</span>
+      <h1>
+        Professeur <span class="accent">Moumen</span><br/>
+        Enseignant en <span class="underline-deco">Informatique</span>
+      </h1>
+      <p class="lead">
+        Passionné par la transmission du savoir numérique, j'accompagne mes étudiants
+        dans la découverte de la programmation, des algorithmes et du développement web —
+        avec une touche bien marocaine. 🇲🇦
+      </p>
+      <div class="cta-row">
+        <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+        <a href="#contact" class="btn btn-ghost">Me contacter</a>
+      </div>
+      <div class="stats">
+        <div><strong>10+</strong><span>années d'enseignement</span></div>
+        <div><strong>500+</strong><span>étudiants formés</span></div>
+        <div><strong>25+</strong><span>projets encadrés</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="card-portrait">
+        <div class="portrait">
+          <div class="portrait-inner">PM</div>
         </div>
-    </header>
+        <div class="tag tag-1">{ code: "passion" }</div>
+        <div class="tag tag-2">⵿ Tamazight</div>
+        <div class="tag tag-3">🕌 Casablanca</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Bio Section -->
-    <section id="a-propos" class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">À Propos</h2>
-                <div class="w-20 h-1 bg-indigo-600 mx-auto rounded-full"></div>
-            </div>
-            <div class="prose prose-lg text-slate-600 mx-auto text-center md:text-left">
-                <p class="mb-6">
-                    Le Professeur Malsah Moumen possède une solide expertise dans son domaine, acquise au fil d'années d'expérience au sein d'institutions de renom. Son approche combine rigueur académique et application pratique, visant à transmettre aux étudiants non seulement des connaissances, mais aussi une pensée critique.
-                </p>
-                <p class="mb-6">
-                    Passionné par la transmission du savoir, il s'engage activement dans l'évolution des méthodes d'apprentissage numériques et collaboratives, plaçant l'étudiant au cœur de son projet pédagogique.
-                </p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-                    <div class="text-center">
-                        <span class="block text-3xl font-bold text-indigo-900">15+</span>
-                        <span class="text-sm text-slate-500 uppercase">Années d'Expérience</span>
-                    </div>
-                    <div class="text-center">
-                        <span class="block text-3xl font-bold text-indigo-900">40+</span>
-                        <span class="text-sm text-slate-500 uppercase">Publications</span>
-                    </div>
-                    <div class="text-center">
-                        <span class="block text-3xl font-bold text-indigo-900">1k+</span>
-                        <span class="text-sm text-slate-500 uppercase">Étudiants Formés</span>
-                    </div>
-                    <div class="text-center">
-                        <span class="block text-3xl font-bold text-indigo-900">05</span>
-                        <span class="text-sm text-slate-500 uppercase">Projets Majeurs</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container two-col">
+    <div>
+      <span class="section-tag">À propos</span>
+      <h2>Un parcours entre <em>tradition</em> et <em>technologie</em></h2>
+    </div>
+    <div class="about-text">
+      <p>
+        Originaire de Fès et installé à Casablanca, le Professeur Moumen enseigne
+        l'informatique depuis plus d'une décennie. Diplômé de l'<strong>ENSIAS</strong>,
+        il combine rigueur académique et pédagogie moderne.
+      </p>
+      <p>
+        Ses cours abordent aussi bien les fondamentaux (algorithmique, structures de
+        données) que les technologies actuelles : développement web, intelligence
+        artificielle et cybersécurité.
+      </p>
+    </div>
+  </div>
+</section>
 
-    <!-- Enseignement Section -->
-    <section id="enseignement" class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">Enseignements & Modules</h2>
-                <p class="text-slate-600">Liste des cours dispensés actuellement</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Course Card 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Module de Spécialité A</h3>
-                    <p class="text-slate-600 mb-4 text-sm leading-relaxed">Introduction approfondie aux concepts fondamentaux et applications avancées.</p>
-                    <a href="#" class="text-indigo-600 font-semibold text-sm hover:underline">Accéder aux supports →</a>
-                </div>
-                <!-- Course Card 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Méthodologie & Pratique</h3>
-                    <p class="text-slate-600 mb-4 text-sm leading-relaxed">Ateliers pratiques et développement des compétences professionnelles des étudiants.</p>
-                    <a href="#" class="text-indigo-600 font-semibold text-sm hover:underline">Accéder aux supports →</a>
-                </div>
-                <!-- Course Card 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Séminaire de Recherche</h3>
-                    <p class="text-slate-600 mb-4 text-sm leading-relaxed">Analyse critique des dernières publications et tendances du domaine.</p>
-                    <a href="#" class="text-indigo-600 font-semibold text-sm hover:underline">Accéder aux supports →</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- PROJECTS -->
+<section id="projects" class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Portfolio</span>
+      <h2>Projets réalisés</h2>
+      <p>Une sélection de projets pédagogiques et personnels.</p>
+    </div>
 
-    <!-- Recherche Section -->
-    <section id="recherche" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row gap-16 items-center">
-                <div class="lg:w-1/2">
-                    <h2 class="text-3xl font-bold text-slate-900 mb-6">Axes de Recherche</h2>
-                    <p class="text-slate-600 mb-8">
-                        Mes travaux actuels se concentrent sur l'intersection entre la technologie et l'éducation, cherchant à optimiser les processus de rétention cognitive.
-                    </p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <span class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center mr-3 mt-1 text-sm font-bold">✓</span>
-                            <span class="text-slate-700">Modélisation systémique des processus d'apprentissage.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center mr-3 mt-1 text-sm font-bold">✓</span>
-                            <span class="text-slate-700">Intelligence Artificielle appliquée à l'enseignement supérieur.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center mr-3 mt-1 text-sm font-bold">✓</span>
-                            <span class="text-slate-700">Analyses statistiques et data-mining éducatif.</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="lg:w-1/2 w-full">
-                    <div class="bg-indigo-900 rounded-3xl p-8 text-white shadow-xl">
-                        <h3 class="text-xl font-semibold mb-6 border-b border-indigo-700 pb-4">Publications Récentes</h3>
-                        <div class="space-y-6">
-                            <div>
-                                <span class="text-indigo-300 text-xs font-mono">2024</span>
-                                <h4 class="font-medium mt-1">Impact des outils numériques sur l'engagement étudiant en amphi.</h4>
-                                <p class="text-indigo-200/70 text-sm italic">Journal International de l'Éducation Moderne</p>
-                            </div>
-                            <div>
-                                <span class="text-indigo-300 text-xs font-mono">2023</span>
-                                <h4 class="font-medium mt-1">Vers une pédagogie hybride : Défis et Opportunités.</h4>
-                                <p class="text-indigo-200/70 text-sm italic">Conférence Nationale de Pédagogie Active</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="projects-grid" id="projectsGrid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col md:flex-row">
-                <div class="bg-indigo-900 p-12 text-white md:w-2/5">
-                    <h2 class="text-3xl font-bold mb-6">Entrons en contact</h2>
-                    <p class="text-indigo-100 mb-12">Je suis disponible pour des collaborations académiques, des conférences ou pour répondre aux questions de mes étudiants.</p>
-                    <div class="space-y-6">
-                        <div class="flex items-center space-x-4">
-                            <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                            <span>m.moumen@univ-institution.edu</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                            <span>Département de [Discipline], Campus Central</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-12 md:w-3/5">
-                    <form onsubmit="event.preventDefault(); document.getElementById('success-msg').classList.remove('hidden');" class="space-y-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1">Nom Complet</label>
-                                <input type="text" placeholder="Votre nom" class="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                                <input type="email" placeholder="votre@email.com" class="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Objet</label>
-                            <input type="text" placeholder="Sujet de votre message" class="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-700 mb-1">Message</label>
-                            <textarea rows="4" placeholder="Bonjour Professeur..." class="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 transition">
-                            Envoyer le message
-                        </button>
-                        <div id="success-msg" class="hidden mt-4 p-4 bg-green-50 text-green-700 rounded-lg text-center text-sm font-medium border border-green-200">
-                            Merci ! Votre message a été simulé comme envoyé avec succès.
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Compétences</span>
+      <h2>Domaines d'expertise</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card"><span class="skill-icon">🐍</span><h3>Python</h3><p>Algorithmique, data, IA</p></div>
+      <div class="skill-card"><span class="skill-icon">🌐</span><h3>Web</h3><p>HTML, CSS, JavaScript</p></div>
+      <div class="skill-card"><span class="skill-icon">🗄️</span><h3>Bases de données</h3><p>SQL, MongoDB</p></div>
+      <div class="skill-card"><span class="skill-icon">🔐</span><h3>Cybersécurité</h3><p>Réseaux & sécurité</p></div>
+      <div class="skill-card"><span class="skill-icon">🤖</span><h3>IA</h3><p>Machine Learning</p></div>
+      <div class="skill-card"><span class="skill-icon">📱</span><h3>Mobile</h3><p>Flutter, React Native</p></div>
+    </div>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0">
-                <span class="text-xl font-bold text-white">Malsah Moumen</span>
-                <p class="text-sm mt-1">Espace Académique Professionnel © 2024</p>
-            </div>
-            <div class="flex space-x-6">
-                <a href="#" class="hover:text-white transition">LinkedIn</a>
-                <a href="#" class="hover:text-white transition">ResearchGate</a>
-                <a href="#" class="hover:text-white transition">Google Scholar</a>
-            </div>
-        </div>
-    </footer>
+<!-- CONTACT -->
+<section id="contact" class="section section-contact">
+  <div class="container contact-inner">
+    <div>
+      <span class="section-tag light">Contact</span>
+      <h2>Discutons de votre projet ou de vos cours</h2>
+      <p>Disponible pour des cours particuliers, conférences et collaborations.</p>
+      <ul class="contact-list">
+        <li>📧 prof.moumen@example.ma</li>
+        <li>📍 Casablanca, Maroc</li>
+        <li>📞 +212 6 00 00 00 00</li>
+      </ul>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <label>Nom <input type="text" required name="name" /></label>
+      <label>Email <input type="email" required name="email" /></label>
+      <label>Message <textarea rows="4" required name="msg"></textarea></label>
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+      <p class="form-status" id="formStatus"></p>
+    </form>
+  </div>
+</section>
 
-    <script>
-        // Simple Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-button');
-        const menu = document.getElementById('mobile-menu');
+<footer>
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Pr. Moumen — صنع بحب في المغرب</p>
+    <p class="footer-sub">Conçu avec une touche de zellige.</p>
+  </div>
+</footer>
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // Close menu on click
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
-    </script>
+<script src="script.js"></script>
 </body>
 </html>
