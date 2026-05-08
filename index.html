@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moumen Malsah — Professeur d'Informatique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --surface: #111827;
+    --surface2: #1a2236;
+    --accent: #00e5a0;
+    --accent2: #4f8ef7;
+    --accent3: #f7c34f;
+    --text: #e8eaf0;
+    --muted: #7a8499;
+    --border: rgba(255,255,255,0.07);
+    --radius: 12px;
+    --font-display: 'Syne', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(10,14,26,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--text); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 6rem 2.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    align-items: center;
+  }
+  .hero-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .hero-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 1.5rem;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero-bio {
+    color: var(--muted);
+    font-size: 0.9rem;
+    max-width: 420px;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0e1a;
+    font-weight: 700;
+  }
+  .btn-primary:hover { box-shadow: 0 6px 20px rgba(0,229,160,0.3); }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* HERO CARD */
+  .hero-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    position: relative;
+  }
+  .hero-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+  .avatar-circle {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0a0e1a;
+    margin-bottom: 1.5rem;
+  }
+  .card-name {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .card-title {
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .card-info { display: flex; flex-direction: column; gap: 0.6rem; }
+  .card-info-row {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.8rem; color: var(--muted);
+  }
+  .info-icon {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: var(--surface2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .status-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 0.4rem;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity:1; } 50% { opacity:0.4; }
+  }
+
+  /* BG DECORATION */
+  .bg-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  #hero > * { position: relative; z-index: 1; }
+  .glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb1 { width: 400px; height: 400px; background: rgba(0,229,160,0.07); top: -100px; right: -100px; }
+  .orb2 { width: 300px; height: 300px; background: rgba(79,142,247,0.07); bottom: -50px; left: -50px; }
+
+  /* SECTIONS */
+  section { padding: 5rem 2.5rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-header { margin-bottom: 3rem; }
+  .section-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  .divider {
+    width: 40px; height: 3px;
+    background: var(--accent);
+    margin-top: 1rem;
+    border-radius: 2px;
+  }
+
+  /* CV SECTION */
+  #cv { background: var(--surface); }
+  .cv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  .cv-col-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent2);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px; top: 0; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+  .timeline-item {
+    padding-left: 2.5rem;
+    padding-bottom: 2rem;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 5px; top: 6px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+  .timeline-year {
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.25rem;
+  }
+  .timeline-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+  .timeline-sub {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .skill-chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    font-size: 0.8rem;
+    display: flex; align-items: center; gap: 0.5rem;
+    transition: border-color 0.2s, transform 0.15s;
+    cursor: default;
+  }
+  .skill-chip:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .skill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+  .lang-grid { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+  .lang-row { display: flex; flex-direction: column; gap: 0.4rem; }
+  .lang-label { display: flex; justify-content: space-between; font-size: 0.8rem; }
+  .lang-label span:last-child { color: var(--muted); }
+  .lang-bar { height: 4px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
+  .lang-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+
+  /* PORTFOLIO */
+  #portfolio { background: var(--bg); }
+  .portfolio-tabs {
+    display: flex; gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--accent);
+    color: #0a0e1a;
+    border-color: var(--accent);
+    font-weight: 700;
+  }
+  .portfolio-panel { display: none; }
+  .portfolio-panel.active { display: block; }
+
+  /* PROJECT CARDS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.15s;
+    display: flex; flex-direction: column;
+    gap: 1rem;
+  }
+  .project-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
+  .project-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+  .project-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: var(--surface2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  .project-links { display: flex; gap: 0.5rem; }
+  .project-link {
+    width: 32px; height: 32px;
+    border-radius: 6px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.85rem;
+    transition: all 0.2s;
+  }
+  .project-link:hover { background: var(--accent); color: #0a0e1a; border-color: var(--accent); }
+  .project-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .project-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+  .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: auto; }
+  .tag {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    background: rgba(0,229,160,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(0,229,160,0.2);
+    letter-spacing: 0.05em;
+  }
+  .tag.blue {
+    background: rgba(79,142,247,0.1);
+    color: var(--accent2);
+    border-color: rgba(79,142,247,0.2);
+  }
+  .tag.yellow {
+    background: rgba(247,195,79,0.1);
+    color: var(--accent3);
+    border-color: rgba(247,195,79,0.2);
+  }
+
+  /* TEACHING CARDS */
+  .teaching-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.2rem;
+  }
+  .teaching-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .teaching-card:hover { border-color: var(--accent3); transform: translateY(-2px); }
+  .teaching-level {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent3);
+    margin-bottom: 0.5rem;
+  }
+  .teaching-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .teaching-desc { font-size: 0.8rem; color: var(--muted); }
+
+  /* CERT CARDS */
+  .cert-list { display: flex; flex-direction: column; gap: 1rem; }
+  .cert-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.5rem;
+    display: flex; align-items: center; gap: 1.2rem;
+    transition: border-color 0.2s;
+  }
+  .cert-card:hover { border-color: var(--accent2); }
+  .cert-badge {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: var(--surface2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .cert-info { flex: 1; }
+  .cert-name { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; }
+  .cert-issuer { font-size: 0.8rem; color: var(--muted); }
+  .cert-year { font-size: 0.8rem; color: var(--accent); white-space: nowrap; }
+
+  /* ADD PROJECT FORM */
+  .add-section {
+    margin-top: 2.5rem;
+    background: var(--surface);
+    border: 1px dashed rgba(0,229,160,0.3);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+  .add-section-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    color: var(--accent);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group.full { grid-column: 1 / -1; }
+  label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+  input, textarea, select {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.6rem 0.8rem;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--accent); }
+  textarea { resize: vertical; min-height: 80px; }
+  select option { background: var(--surface2); }
+
+  /* CONTACT */
+  #contact { background: var(--surface); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.85rem;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .contact-link-icon {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    background: var(--surface);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .contact-link-text { flex: 1; }
+  .contact-link-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .contact-link-value { font-size: 0.88rem; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .send-btn {
+    background: var(--accent);
+    color: #0a0e1a;
+    font-weight: 700;
+    padding: 0.8rem;
+    border-radius: 6px;
+    border: none;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+    letter-spacing: 0.05em;
+  }
+  .send-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  footer span { color: var(--accent); }
+
+  /* ANIMATIONS */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem; }
+    .nav-links { display: none; }
+    #hero { padding: 5rem 1.2rem 3rem; }
+    .hero-grid, .cv-grid, .contact-grid { grid-template-columns: 1fr; }
+    section { padding: 3rem 1.2rem; }
+    .form-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">M<span>alsah</span></div>
+  <ul class="nav-links">
+    <li><a href="#hero">Accueil</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="bg-grid"></div>
+  <div class="glow-orb orb1"></div>
+  <div class="glow-orb orb2"></div>
+  <div class="hero-grid section-inner">
+    <div class="fade-in">
+      <div class="hero-label">Disponible · Hassi Berkane</div>
+      <h1>MOUMEN<br><em>MALSAH</em></h1>
+      <p class="hero-bio">
+        Enseignant d'informatique au Lycée Hassi Berkane, passionné par le développement informatique et web. Je m'efforce d'inspirer la prochaine génération de développeurs et de résoudre des problèmes concrets par le code.
+      </p>
+      <div class="hero-btns">
+        <a href="#portfolio" class="btn btn-primary">Voir le Portfolio →</a>
+        <a href="#cv" class="btn btn-outline">Mon CV</a>
+        <a href="mailto:moumenmalsah@gmail.com" class="btn btn-outline">Me Contacter</a>
+      </div>
+    </div>
+    <div class="fade-in" style="transition-delay:0.15s">
+      <div class="hero-card">
+        <div class="avatar-circle">MM</div>
+        <div class="card-name">Moumen Malsah</div>
+        <div class="card-title">Professeur d'Informatique</div>
+        <div class="card-info">
+          <div class="card-info-row"><div class="info-icon">🏫</div> Lycée Hassi Berkane</div>
+          <div class="card-info-row"><div class="info-icon">📍</div> Hassi Berkane, Oriental</div>
+          <div class="card-info-row"><div class="info-icon">🎓</div> Licence Sci. Math & Info.</div>
+          <div class="card-info-row"><div class="info-icon">💼</div> <span><span class="status-dot"></span>En poste depuis 2022</span></div>
+          <div class="card-info-row"><div class="info-icon">🔗</div>
+            <a href="https://github.com/moumenmalsah" style="color:var(--accent);text-decoration:none;" target="_blank">github.com/moumenmalsah</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">// curriculum vitae</div>
+      <h2>Mon Parcours</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="cv-grid">
+      <div class="fade-in">
+        <!-- EDUCATION -->
+        <div class="cv-col-title">🎓 Formation</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">Licence</div>
+            <div class="timeline-title">Sciences Mathématiques & Informatique</div>
+            <div class="timeline-sub">Université — Maroc</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Baccalauréat</div>
+            <div class="timeline-title">Formation initiale</div>
+            <div class="timeline-sub">Lycée, Maroc</div>
+          </div>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div class="cv-col-title" style="margin-top:2.5rem">💼 Expérience</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">2022 — Présent</div>
+            <div class="timeline-title">Professeur d'Informatique</div>
+            <div class="timeline-sub">Lycée Hassi Berkane · Académie Orientale — DP Nador</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fade-in" style="transition-delay:0.1s">
+        <!-- SKILLS -->
+        <div class="cv-col-title">🛠 Compétences Techniques</div>
+        <div class="skills-grid" id="skills-grid">
+          <div class="skill-chip"><span class="skill-dot"></span>HTML / CSS</div>
+          <div class="skill-chip"><span class="skill-dot"></span>JavaScript</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Python</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Algorithmique</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Réseaux</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Linux</div>
+          <div class="skill-chip"><span class="skill-dot"></span>MS Office</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Pédagogie</div>
+        </div>
+
+        <!-- LANGUAGES -->
+        <div class="cv-col-title" style="margin-top:2.5rem">🌍 Langues</div>
+        <div class="lang-grid">
+          <div class="lang-row">
+            <div class="lang-label"><span>Arabe</span><span>Langue maternelle</span></div>
+            <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+          </div>
+          <div class="lang-row">
+            <div class="lang-label"><span>Français</span><span>Courant</span></div>
+            <div class="lang-bar"><div class="lang-fill" style="width:85%"></div></div>
+          </div>
+          <div class="lang-row">
+            <div class="lang-label"><span>Anglais</span><span>Intermédiaire</span></div>
+            <div class="lang-bar"><div class="lang-fill" style="width:60%"></div></div>
+          </div>
+          <div class="lang-row">
+            <div class="lang-label"><span>Tamazight</span><span>Courant</span></div>
+            <div class="lang-bar"><div class="lang-fill" style="width:80%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">// portfolio</div>
+      <h2>Mes Travaux</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="portfolio-tabs">
+      <button class="tab-btn active" onclick="switchTab('projects')">Projets</button>
+      <button class="tab-btn" onclick="switchTab('teaching')">Cours</button>
+      <button class="tab-btn" onclick="switchTab('certs')">Certifications</button>
+    </div>
+
+    <!-- PROJECTS PANEL -->
+    <div class="portfolio-panel active" id="panel-projects">
+      <div class="projects-grid" id="projects-grid">
+        <!-- GitHub reminder card -->
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="project-icon">⭐</div>
+            <div class="project-links">
+              <a href="https://github.com/moumenmalsah" target="_blank" class="project-link" title="GitHub">⬡</a>
+            </div>
+          </div>
+          <div>
+            <div class="project-name">Portfolio GitHub</div>
+            <div class="project-desc">Retrouvez tous mes projets et dépôts sur mon profil GitHub. Développement web, scripts, et ressources pédagogiques.</div>
+          </div>
+          <div class="project-tags">
+            <span class="tag">Open Source</span>
+            <span class="tag blue">GitHub</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADD PROJECT FORM -->
+      <div class="add-section fade-in">
+        <div class="add-section-title">＋ Ajouter un Projet</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Nom du projet</label>
+            <input type="text" id="proj-name" placeholder="Mon Projet">
+          </div>
+          <div class="form-group">
+            <label>Lien (GitHub / URL)</label>
+            <input type="url" id="proj-url" placeholder="https://github.com/...">
+          </div>
+          <div class="form-group full">
+            <label>Description</label>
+            <textarea id="proj-desc" placeholder="Courte description du projet..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Icône (emoji)</label>
+            <input type="text" id="proj-icon" placeholder="🚀" maxlength="2">
+          </div>
+          <div class="form-group">
+            <label>Tags (séparés par virgule)</label>
+            <input type="text" id="proj-tags" placeholder="HTML, CSS, JS">
+          </div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:1rem" onclick="addProject()">Ajouter le projet</button>
+      </div>
+    </div>
+
+    <!-- TEACHING PANEL -->
+    <div class="portfolio-panel" id="panel-teaching">
+      <div class="teaching-grid" id="teaching-grid">
+        <div class="teaching-card">
+          <div class="teaching-level">Tronc Commun Scientifique</div>
+          <div class="teaching-name">Informatique TCS</div>
+          <div class="teaching-desc">Cours d'introduction à l'informatique, algorithmes de base, et bureautique pour les élèves de tronc commun scientifique.</div>
+        </div>
+        <div class="teaching-card">
+          <div class="teaching-level">Tronc Commun Littéraire</div>
+          <div class="teaching-name">Informatique TCL</div>
+          <div class="teaching-desc">Initiation à l'informatique, usage des outils numériques et notions de base pour les élèves de tronc commun littéraire.</div>
+        </div>
+        <div class="teaching-card">
+          <div class="teaching-level">2ème Année Bac</div>
+          <div class="teaching-name">Informatique 2APIC</div>
+          <div class="teaching-desc">Algorithmique avancée, programmation, bases de données et réseaux pour les élèves de 2APIC.</div>
+        </div>
+        <div class="teaching-card">
+          <div class="teaching-level">3ème Année Bac</div>
+          <div class="teaching-name">Informatique 3APIC</div>
+          <div class="teaching-desc">Programmation orientée objet, projets informatiques et préparation aux examens pour les élèves de 3APIC.</div>
+        </div>
+      </div>
+
+      <div class="add-section fade-in" style="margin-top:2rem">
+        <div class="add-section-title">＋ Ajouter un Cours</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Niveau</label>
+            <select id="teach-level">
+              <option>Tronc Commun Scientifique</option>
+              <option>Tronc Commun Littéraire</option>
+              <option>2APIC</option>
+              <option>3APIC</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Intitulé du cours</label>
+            <input type="text" id="teach-name" placeholder="Titre du cours">
+          </div>
+          <div class="form-group full">
+            <label>Description</label>
+            <textarea id="teach-desc" placeholder="Contenu du cours..."></textarea>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:1rem" onclick="addTeaching()">Ajouter</button>
+      </div>
+    </div>
+
+    <!-- CERTS PANEL -->
+    <div class="portfolio-panel" id="panel-certs">
+      <div class="cert-list" id="cert-list">
+        <div class="cert-card">
+          <div class="cert-badge">🎓</div>
+          <div class="cert-info">
+            <div class="cert-name">Licence Sciences Math & Informatique</div>
+            <div class="cert-issuer">Université — Maroc</div>
+          </div>
+          <div class="cert-year">Diplôme</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">📜</div>
+          <div class="cert-info">
+            <div class="cert-name">Concours d'enseignement</div>
+            <div class="cert-issuer">Académie Orientale — DP Nador</div>
+          </div>
+          <div class="cert-year">2022</div>
+        </div>
+      </div>
+
+      <div class="add-section fade-in" style="margin-top:2rem">
+        <div class="add-section-title">＋ Ajouter une Certification</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Nom</label>
+            <input type="text" id="cert-name-inp" placeholder="Nom de la certification">
+          </div>
+          <div class="form-group">
+            <label>Organisme</label>
+            <input type="text" id="cert-issuer-inp" placeholder="Ex: Coursera, MOOC...">
+          </div>
+          <div class="form-group">
+            <label>Année</label>
+            <input type="text" id="cert-year-inp" placeholder="2024">
+          </div>
+          <div class="form-group">
+            <label>Icône (emoji)</label>
+            <input type="text" id="cert-icon-inp" placeholder="📜" maxlength="2">
+          </div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:1rem" onclick="addCert()">Ajouter</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">// contact</div>
+      <h2>Me Contacter</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="fade-in">
+        <p style="color:var(--muted);font-size:0.88rem;margin-bottom:1rem">N'hésitez pas à me contacter pour toute collaboration, question ou projet éducatif.</p>
+        <div class="contact-links">
+          <a href="mailto:moumenmalsah@gmail.com" class="contact-link">
+            <div class="contact-link-icon">✉️</div>
+            <div class="contact-link-text">
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-value">moumenmalsah@gmail.com</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/moumen-malsah-367ba9306/" target="_blank" class="contact-link">
+            <div class="contact-link-icon">🔗</div>
+            <div class="contact-link-text">
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-value">moumen-malsah</div>
+            </div>
+          </a>
+          <a href="https://github.com/moumenmalsah" target="_blank" class="contact-link">
+            <div class="contact-link-icon">⬡</div>
+            <div class="contact-link-text">
+              <div class="contact-link-label">GitHub</div>
+              <div class="contact-link-value">moumenmalsah</div>
+            </div>
+          </a>
+          <div class="contact-link" style="cursor:default">
+            <div class="contact-link-icon">📍</div>
+            <div class="contact-link-text">
+              <div class="contact-link-label">Localisation</div>
+              <div class="contact-link-value">Hassi Berkane, Oriental, Maroc</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-in" style="transition-delay:0.1s">
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem">
+          <div class="cv-col-title" style="margin-bottom:1.2rem">📬 Envoyer un message</div>
+          <div class="contact-form">
+            <div class="form-group">
+              <label>Votre nom</label>
+              <input type="text" id="msg-name" placeholder="Prénom Nom">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="msg-email" placeholder="votre@email.com">
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea id="msg-body" placeholder="Votre message..." style="min-height:120px"></textarea>
+            </div>
+            <button class="send-btn" onclick="sendMsg()">Envoyer →</button>
+            <div id="msg-feedback" style="font-size:0.8rem;color:var(--accent);display:none">✓ Message envoyé ! (mailto ouvert)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Moumen Malsah</span> · Professeur d'Informatique · Hassi Berkane</p>
+  <p style="margin-top:0.3rem">Construit avec passion 🖥️</p>
+</footer>
+
+<script>
+// TABS
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.portfolio-panel').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('panel-' + tab).classList.add('active');
+}
+
+// ADD PROJECT
+function addProject() {
+  const name = document.getElementById('proj-name').value.trim();
+  const url = document.getElementById('proj-url').value.trim();
+  const desc = document.getElementById('proj-desc').value.trim();
+  const icon = document.getElementById('proj-icon').value.trim() || '📁';
+  const tags = document.getElementById('proj-tags').value.trim();
+  if (!name) return alert('Veuillez entrer un nom de projet.');
+  const card = document.createElement('div');
+  card.className = 'project-card';
+  const tagHtml = tags ? tags.split(',').map(t => `<span class="tag">${t.trim()}</span>`).join('') : '';
+  card.innerHTML = `
+    <div class="project-card-top">
+      <div class="project-icon">${icon}</div>
+      <div class="project-links">
+        ${url ? `<a href="${url}" target="_blank" class="project-link" title="Lien">↗</a>` : ''}
+        <button class="project-link" onclick="this.closest('.project-card').remove()" title="Supprimer" style="cursor:pointer;font-size:1rem">×</button>
+      </div>
+    </div>
+    <div>
+      <div class="project-name">${name}</div>
+      <div class="project-desc">${desc || 'Aucune description.'}</div>
+    </div>
+    <div class="project-tags">${tagHtml}</div>
+  `;
+  document.getElementById('projects-grid').insertBefore(card, document.getElementById('projects-grid').lastElementChild);
+  ['proj-name','proj-url','proj-desc','proj-icon','proj-tags'].forEach(id => document.getElementById(id).value = '');
+}
+
+// ADD TEACHING
+function addTeaching() {
+  const level = document.getElementById('teach-level').value;
+  const name = document.getElementById('teach-name').value.trim();
+  const desc = document.getElementById('teach-desc').value.trim();
+  if (!name) return alert('Veuillez entrer un intitulé.');
+  const card = document.createElement('div');
+  card.className = 'teaching-card';
+  card.innerHTML = `
+    <div class="teaching-level">${level}</div>
+    <div class="teaching-name">${name}</div>
+    <div class="teaching-desc">${desc || ''}</div>
+    <button onclick="this.closest('.teaching-card').remove()" style="margin-top:0.8rem;background:none;border:1px solid var(--border);color:var(--muted);border-radius:4px;padding:0.3rem 0.7rem;cursor:pointer;font-size:0.75rem">Supprimer</button>
+  `;
+  document.getElementById('teaching-grid').appendChild(card);
+  document.getElementById('teach-name').value = '';
+  document.getElementById('teach-desc').value = '';
+}
+
+// ADD CERT
+function addCert() {
+  const name = document.getElementById('cert-name-inp').value.trim();
+  const issuer = document.getElementById('cert-issuer-inp').value.trim();
+  const year = document.getElementById('cert-year-inp').value.trim();
+  const icon = document.getElementById('cert-icon-inp').value.trim() || '📜';
+  if (!name) return alert('Veuillez entrer un nom.');
+  const card = document.createElement('div');
+  card.className = 'cert-card';
+  card.innerHTML = `
+    <div class="cert-badge">${icon}</div>
+    <div class="cert-info">
+      <div class="cert-name">${name}</div>
+      <div class="cert-issuer">${issuer}</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.4rem">
+      <div class="cert-year">${year}</div>
+      <button onclick="this.closest('.cert-card').remove()" style="background:none;border:1px solid var(--border);color:var(--muted);border-radius:4px;padding:0.2rem 0.5rem;cursor:pointer;font-size:0.7rem">×</button>
+    </div>
+  `;
+  document.getElementById('cert-list').appendChild(card);
+  ['cert-name-inp','cert-issuer-inp','cert-year-inp','cert-icon-inp'].forEach(id => document.getElementById(id).value = '');
+}
+
+// SEND MESSAGE (mailto)
+function sendMsg() {
+  const name = document.getElementById('msg-name').value.trim();
+  const email = document.getElementById('msg-email').value.trim();
+  const body = document.getElementById('msg-body').value.trim();
+  if (!body) return alert('Veuillez entrer un message.');
+  const subject = encodeURIComponent('Contact depuis le portfolio — ' + name);
+  const bodyEnc = encodeURIComponent(`De: ${name} (${email})\n\n${body}`);
+  window.location.href = `mailto:moumenmalsah@gmail.com?subject=${subject}&body=${bodyEnc}`;
+  document.getElementById('msg-feedback').style.display = 'block';
+}
+
+// FADE IN OBSERVER
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
